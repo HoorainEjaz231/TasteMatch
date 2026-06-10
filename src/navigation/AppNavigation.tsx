@@ -6,6 +6,7 @@ import { BottomTabParamList, RootStackParamList } from './types';
 import { theme } from '../theme/theme';
 import { styles } from './style';
 import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
+import { TasteProfileScreen } from '../screens/TasteProfileScreen/TasteProfileScreen';
 import { CustomTabBar } from './CustomTabBar';
 
 
@@ -23,13 +24,16 @@ const navigationTheme = {
   },
 };
 
+// Prevent white flash on navigation by setting the global background
+const NAVIGATION_CONTAINER_STYLE = { backgroundColor: theme.colors.background };
+
 function EmptyTabScreen() {
   return <View style={styles.placeholder}>
     <Text style={{color:'white'}}>Hello world</Text>
   </View>;
 }
 
-import { TasteProfileScreen } from '../screens/TasteProfileScreen/TasteProfileScreen';
+import { OnboardingDataScreen } from '../screens/OnboardingDataScreen/OnboardingDataScreen';
 
 function MainTabs() {
   return (
@@ -54,12 +58,17 @@ export function AppNavigator() {
     <NavigationContainer theme={navigationTheme}>
       <Stack.Navigator
         screenOptions={{
-          animation: 'fade_from_bottom',
+          animation: 'fade',
           contentStyle: { backgroundColor: theme.colors.background },
           headerShown: false,
         }}
       >
         <Stack.Screen name="MainTabs" component={MainTabs} />
+        <Stack.Screen
+          name="OnboardingData"
+          component={OnboardingDataScreen}
+          options={{ animation: 'slide_from_right' }}
+        />
       </Stack.Navigator>
     </NavigationContainer>
   );

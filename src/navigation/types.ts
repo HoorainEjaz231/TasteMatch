@@ -1,5 +1,8 @@
+import { NativeStackNavigationProp, NativeStackNavigatorProps } from "@react-navigation/native-stack";
+
 export type RootStackParamList = {
   MainTabs: undefined;
+  OnboardingData: undefined;
 };
 
 export type BottomTabParamList = {
@@ -8,3 +11,5 @@ export type BottomTabParamList = {
   TasteProfile: undefined;
   Search: undefined;
 };
+
+export type RootStack = NativeStackNavigationProp<RootStackParamList>

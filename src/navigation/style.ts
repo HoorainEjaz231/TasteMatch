@@ -28,7 +28,7 @@ export const styles = StyleSheet.create({
   },
   tabPillBlur: {
     alignItems: 'center',
-    backgroundColor: 'rgba(0, 0, 0, 0.95)',
+    backgroundColor: 'rgba(7, 8, 9, 0.74)',
     flex: 1,
     flexDirection: 'row',
     padding: scale(5),

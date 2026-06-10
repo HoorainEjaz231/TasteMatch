@@ -11,7 +11,9 @@ export const styles = StyleSheet.create({
     overflow: 'hidden',
   },
   container:{
-    paddingHorizontal:moderateScale(18)
+    flex: 1,
+    paddingHorizontal:moderateScale(18),
+    paddingBottom: verticalScale(110),
   },
   background: {
     ...StyleSheet.absoluteFillObject,

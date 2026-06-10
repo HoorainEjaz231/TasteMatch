@@ -18,7 +18,7 @@ export default function App() {
   return (
     <Provider store={store}>
       <PersistGate loading={null} persistor={persistor}>
-        <GestureHandlerRootView style={{ flex: 1 }}>
+        <GestureHandlerRootView style={{ flex: 1, backgroundColor: '#0A0A0F' }}>
           <AppNavigator />
         </GestureHandlerRootView>
       </PersistGate>

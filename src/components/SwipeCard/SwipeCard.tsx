@@ -32,15 +32,15 @@ export function SwipeCard({ food, onSwipe, isTopCard, swipeTrigger }: SwipeCardP
 
   useEffect(() => {
     if (swipeTrigger && isTopCard) {
-      // Programmatic swipe
+      // Programmatic swipe - Slower animation
       if (swipeTrigger === 'left') {
-        translateX.value = withTiming(-SCREEN_WIDTH * 1.5, { duration: 400 }, () => runOnJS(onSwipe)('left'));
+        translateX.value = withTiming(-SCREEN_WIDTH * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('left'));
       } else if (swipeTrigger === 'right') {
-        translateX.value = withTiming(SCREEN_WIDTH * 1.5, { duration: 400 }, () => runOnJS(onSwipe)('right'));
+        translateX.value = withTiming(SCREEN_WIDTH * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('right'));
       } else if (swipeTrigger === 'up') {
-        translateY.value = withTiming(-SCREEN_HEIGHT * 1.5, { duration: 400 }, () => runOnJS(onSwipe)('up'));
+        translateY.value = withTiming(-SCREEN_HEIGHT * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('up'));
       } else if (swipeTrigger === 'down') {
-        translateY.value = withTiming(SCREEN_HEIGHT * 1.5, { duration: 400 }, () => runOnJS(onSwipe)('down'));
+        translateY.value = withTiming(SCREEN_HEIGHT * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('down'));
       }
     }
   }, [swipeTrigger, isTopCard]);
@@ -57,18 +57,18 @@ export function SwipeCard({ food, onSwipe, isTopCard, swipeTrigger }: SwipeCardP
 
       if (absX > absY) {
         if (event.translationX > SWIPE_THRESHOLD) {
-          translateX.value = withTiming(SCREEN_WIDTH * 1.5, { duration: 300 }, () => runOnJS(onSwipe)('right'));
+          translateX.value = withTiming(SCREEN_WIDTH * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('right'));
         } else if (event.translationX < -SWIPE_THRESHOLD) {
-          translateX.value = withTiming(-SCREEN_WIDTH * 1.5, { duration: 300 }, () => runOnJS(onSwipe)('left'));
+          translateX.value = withTiming(-SCREEN_WIDTH * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('left'));
         } else {
           translateX.value = withSpring(0);
           translateY.value = withSpring(0);
         }
       } else {
         if (event.translationY > VERTICAL_THRESHOLD) {
-          translateY.value = withTiming(SCREEN_HEIGHT * 1.5, { duration: 300 }, () => runOnJS(onSwipe)('down'));
+          translateY.value = withTiming(SCREEN_HEIGHT * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('down'));
         } else if (event.translationY < -VERTICAL_THRESHOLD) {
-          translateY.value = withTiming(-SCREEN_HEIGHT * 1.5, { duration: 300 }, () => runOnJS(onSwipe)('up'));
+          translateY.value = withTiming(-SCREEN_HEIGHT * 1.5, { duration: 600 }, () => runOnJS(onSwipe)('up'));
         } else {
           translateX.value = withSpring(0);
           translateY.value = withSpring(0);
@@ -84,7 +84,19 @@ export function SwipeCard({ food, onSwipe, isTopCard, swipeTrigger }: SwipeCardP
       Extrapolate.CLAMP
     );
 
+    const maxDisplacementX = Math.abs(translateX.value) / (SCREEN_WIDTH / 2);
+    const maxDisplacementY = Math.abs(translateY.value) / (SCREEN_HEIGHT / 2);
+    const progress = Math.max(maxDisplacementX, maxDisplacementY);
+
+    const opacity = interpolate(
+      progress,
+      [0, 1],
+      [1, 0],
+      Extrapolate.CLAMP
+    );
+
     return {
+      opacity,
       transform: [
         { translateX: translateX.value },
         { translateY: translateY.value },

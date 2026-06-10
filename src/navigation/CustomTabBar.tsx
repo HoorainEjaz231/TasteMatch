@@ -68,8 +68,9 @@ export function CustomTabBar({ state, descriptors, navigation }: BottomTabBarPro
         start={{ x: 1, y: 1 }}
         end={{ x: 1, y: 1 }}
         style={styles.tabPillGradient}
+        pointerEvents="box-none"
       >
-        <View style={styles.tabPill}>
+        <View style={styles.tabPill} pointerEvents="box-none">
           <SafeBlurView intensity={28} tint="dark" style={styles.tabPillBlur}>
             <View pointerEvents="none" style={[StyleSheet.absoluteFillObject, { backgroundColor: 'rgba(0, 0, 0, 0.95)' }]} />
             {pillRoutes.map(renderTab)}

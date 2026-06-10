@@ -1,5 +1,6 @@
 import { useEffect } from 'react';
 import { useNavigation } from '@react-navigation/native';
+import { useSelector, useDispatch } from 'react-redux';
 import Animated, {
   Easing,
   useAnimatedStyle,
@@ -7,11 +8,26 @@ import Animated, {
   withDelay,
   withTiming,
 } from 'react-native-reanimated';
+import { RootStack } from '../../navigation/types';
+import { RootState } from '../../store/store';
+import { resetProfile } from '../../store/tasteProfileSlice';
 
 export function useLogic() {
-  const navigation = useNavigation();
+  const navigation = useNavigation<RootStack>();
+  const dispatch = useDispatch();
   const headerProgress = useSharedValue(0);
   const cardProgress = useSharedValue(0);
+
+  const { currentIndex, isFinished } = useSelector(
+    (state: RootState) => state.tasteProfile
+  );
+
+  const hasStarted = currentIndex > 0 || isFinished;
+  const ctaLabel = isFinished
+    ? 'Restart Swiping'
+    : hasStarted
+    ? 'Continue Swiping'
+    : 'Start Swiping';
 
   useEffect(() => {
     headerProgress.value = withTiming(1, {
@@ -44,12 +60,16 @@ export function useLogic() {
   };
 
   const handleStart = () => {
-    // Swipe deck navigation will be connected when the second screen is implemented.
+    if (isFinished) {
+      dispatch(resetProfile());
+    }
+    navigation.navigate('OnboardingData');
   };
 
   return {
     Animated,
     cardAnimatedStyle,
+    ctaLabel,
     handleBack,
     handleStart,
     headerAnimatedStyle,

@@ -14,16 +14,16 @@ import { SafeBlurView } from '../../utils/SafeBlurView';
 import { StartCard } from '../../components/StartCard/StartCard';
 
 export function HomeScreen() {
-  const { Animated, cardAnimatedStyle, handleBack, handleStart, headerAnimatedStyle } = useLogic();
+  const { Animated, cardAnimatedStyle, ctaLabel, handleBack, handleStart, headerAnimatedStyle } = useLogic();
     const insets = useSafeAreaInsets()
   return (
     <View style={styles.root}>
       <StatusBar backgroundColor="transparent" style="light" translucent />
 
-      <Image source={require('../../assets/images/Ellipse6.png')} style={styles.ambientTop} contentFit="contain" />
-      <Image source={require('../../assets/images/Ellipse5.png')} style={styles.ambientBottom} contentFit="contain" />
+      <Image pointerEvents="none" source={require('../../assets/images/Ellipse6.png')} style={styles.ambientTop} contentFit="contain" />
+      <Image pointerEvents="none" source={require('../../assets/images/Ellipse5.png')} style={styles.ambientBottom} contentFit="contain" />
 
-      <View style={[styles.container,{paddingTop:insets.top}]}>
+      <View style={[styles.container,{paddingTop:insets.top, zIndex:2}]}>
 
          <Animated.View style={[styles.header, headerAnimatedStyle]}>
           {/* Back button — LinearGradient wraps with padding:1 for gradient border */}
@@ -61,7 +61,7 @@ export function HomeScreen() {
                 pressed && { backgroundColor: theme.colors.accentPressed },
               ]}
             >
-              <Text style={styles.startButtonText}>{introContent.cta}</Text>
+              <Text style={styles.startButtonText}>{ctaLabel}</Text>
             </Pressable>
             <Text style={styles.timeHint}>{introContent.timeHint}</Text>
           </StartCard>

@@ -47,8 +47,16 @@ export const tasteProfileSlice = createSlice({
       state.ratings = {};
       state.isFinished = false;
     },
+    undoRating: (state) => {
+      if (state.currentIndex > 0) {
+        state.currentIndex -= 1;
+        state.isFinished = false;
+        const foodId = state.foodData[state.currentIndex].id;
+        delete state.ratings[foodId];
+      }
+    },
   },
 });
 
-export const { rateFood, resetProfile } = tasteProfileSlice.actions;
+export const { rateFood, resetProfile, undoRating } = tasteProfileSlice.actions;
 export default tasteProfileSlice.reducer;
