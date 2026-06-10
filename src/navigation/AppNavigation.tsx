@@ -28,9 +28,7 @@ const navigationTheme = {
 const NAVIGATION_CONTAINER_STYLE = { backgroundColor: theme.colors.background };
 
 function EmptyTabScreen() {
-  return <View style={styles.placeholder}>
-    <Text style={{color:'white'}}>Hello world</Text>
-  </View>;
+  return <View style={styles.placeholder}/>;
 }
 
 import { OnboardingDataScreen } from '../screens/OnboardingDataScreen/OnboardingDataScreen';

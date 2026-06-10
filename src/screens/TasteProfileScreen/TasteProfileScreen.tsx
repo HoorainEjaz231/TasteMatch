@@ -34,7 +34,7 @@ const LIFESTYLE_ITEMS = [
 ];
 
 const FOOD_TABS = [
-  { key: 'liked',      label: 'Food You Love',      subtitle: "We'll recommend these",       rating: 'liked',      color: '#FF2D55', iconBg: 'rgba(255,45,85,0.18)',    Icon: Heart,      iconFill: true,  emoji: '❤️'  },
+  { key: 'liked',      label: 'Food You Love',      subtitle: "We'll recommend these",       rating: 'liked',      color: 'white', iconBg: '#0091FF',    Icon: Heart,      iconFill: true,  emoji: '❤️'  },
   { key: 'superliked', label: 'Food You SuperLike', subtitle: "We'll highly recommend these", rating: 'superliked', color: '#FFD60A', iconBg: 'rgba(255,214,10,0.18)',   Icon: Star,       iconFill: true,  emoji: '⭐'  },
   { key: 'notsure',    label: 'Food You NotSure',   subtitle: "We might recommend these",    rating: 'notsure',    color: '#8E8E93', iconBg: 'rgba(142,142,147,0.18)',  Icon: HelpCircle, iconFill: false, emoji: '🤔'  },
   { key: 'disliked',   label: 'Food You Hate',      subtitle: "We'll not recommend these",   rating: 'disliked',   color: '#636366', iconBg: 'rgba(99,99,102,0.18)',    Icon: X,          iconFill: false, emoji: '🚫'  },
@@ -233,7 +233,7 @@ function FoodsCard({
                 <View style={[styles.sectionCardHeader, { paddingHorizontal: 0, marginTop: verticalScale(10) }]}>
                   <Text style={{ fontSize: normalize(18) }}>{tab.emoji}</Text>
                   <View style={{ flex: 1 }}>
-                    <Text style={[styles.sectionCardTitle, { color: tab.color }]}>{tab.label}</Text>
+                    <Text style={[styles.sectionCardTitle,]}>{tab.label}</Text>
                     <Text style={styles.sectionCardSubtitle}>{tab.subtitle}</Text>
                   </View>
                 </View>
@@ -247,7 +247,7 @@ function FoodsCard({
                   <ScrollView
                     nestedScrollEnabled
                     showsVerticalScrollIndicator={false}
-                    style={{ maxHeight: verticalScale(220) }}
+                    style={{ maxHeight: verticalScale(440) }}
                   >
                     {foods.map((food, idx) => (
                       <View
