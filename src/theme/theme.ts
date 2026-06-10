@@ -1,0 +1,30 @@
+export const theme = {
+  colors: {
+    background: '#050606',
+    backgroundDeep: '#030405',
+    accent: '#4FDC86',
+    accentPressed: '#41C776',
+    text: '#F7F8F8',
+    textMuted: '#D8DADB',
+    textSoft: '#B8BABB',
+    border: 'rgba(255, 255, 255, 0.32)',
+    borderSoft: 'rgba(255, 255, 255, 0.16)',
+    glass: 'rgba(255, 255, 255, 0.08)',
+    glassDeep: 'rgba(10, 12, 13, 0.72)',
+    tabInactive: '#DDDEE0',
+    black: '#000000',
+  },
+  fontWeights: {
+    regular: '400',
+    medium: '500',
+    semibold: '600',
+    bold: '700',
+    heavy: '800',
+  },
+  radius: {
+    sm: 12,
+    md: 16,
+    lg: 28,
+    xl: 44,
+  },
+} as const;
