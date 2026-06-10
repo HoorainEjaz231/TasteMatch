@@ -29,6 +29,8 @@ function EmptyTabScreen() {
   </View>;
 }
 
+import { TasteProfileScreen } from '../screens/TasteProfileScreen/TasteProfileScreen';
+
 function MainTabs() {
   return (
     <Tab.Navigator
@@ -41,7 +43,7 @@ function MainTabs() {
     >
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="FAQ" component={EmptyTabScreen} />
-      <Tab.Screen name="TasteProfile" component={EmptyTabScreen} />
+      <Tab.Screen name="TasteProfile" component={TasteProfileScreen} />
       <Tab.Screen name="Search" component={EmptyTabScreen} />
     </Tab.Navigator>
   );
