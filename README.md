@@ -1,3 +1,4 @@
+APK LINK: https://drive.google.com/file/d/1r87pkhU2AxqMLlTHAGFHXRNmxkQkpxoe/view?usp=sharing
 # TasteMatch 🍽️
 
 TasteMatch is a sleek, highly interactive React Native (Expo) mobile application designed to build a personalized **Taste Profile** for users through a fun, Tinder-like swiping interface. By learning what foods users love, hate, or are just "not sure" about, the app aims to eventually provide highly tailored meal recommendations and diet plans.
