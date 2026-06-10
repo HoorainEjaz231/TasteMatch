@@ -1,5 +1,4 @@
 import { Dimensions, PixelRatio } from 'react-native';
-import { useSafeAreaInsets } from 'react-native-safe-area-context';
 
 const { width, height } = Dimensions.get('window');
 
@@ -25,30 +24,3 @@ export const screen = {
   horizontalPadding: scale(32),
 } as const;
 
-// Store insets globally (will be updated by a component)
-let globalInsets = {
-  top: 0,
-  bottom: 0,
-  left: 0,
-  right: 0,
-};
-
-// Component to initialize the insets (must be placed at root of your app)
-export const SafeInsetsInitializer = () => {
-  const insets = useSafeAreaInsets();
-  
-  // Update global insets when they change
-  globalInsets = {
-    top: insets.top,
-    bottom: insets.bottom,
-    left: insets.left,
-    right: insets.right,
-  };
-  
-  return null;
-};
-
-// The function you want - returns safe area value by string parameter
-export const Safeinsets = (position: 'top' | 'bottom' | 'left' | 'right'): number => {
-  return globalInsets[position];
-};

@@ -2,7 +2,7 @@ export const theme = {
   colors: {
     background: '#050606',
     backgroundDeep: '#030405',
-    accent: '#4FDC86',
+    accent: '#4BD883',
     accentPressed: '#41C776',
     text: '#F7F8F8',
     textMuted: '#D8DADB',
@@ -14,6 +14,7 @@ export const theme = {
     tabInactive: '#DDDEE0',
     black: '#000000',
   },
+  fontFamily: 'SFPro',
   fontWeights: {
     regular: '400',
     medium: '500',

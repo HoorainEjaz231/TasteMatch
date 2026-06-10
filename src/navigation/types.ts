@@ -3,7 +3,7 @@ export type RootStackParamList = {
 };
 
 export type BottomTabParamList = {
-  Start: undefined;
+  HomeScreen: undefined;
   FAQ: undefined;
   TasteProfile: undefined;
   Search: undefined;

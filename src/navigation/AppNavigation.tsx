@@ -5,7 +5,7 @@ import { Text, View } from 'react-native';
 import { BottomTabParamList, RootStackParamList } from './types';
 import { theme } from '../theme/theme';
 import { styles } from './style';
-import { Safeinsets } from '../utils/scale';
+import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -24,21 +24,21 @@ const navigationTheme = {
 
 function EmptyTabScreen() {
   return <View style={styles.placeholder}>
-    <Text style={{color:'white', paddingTop:Safeinsets('top')}}>Hello world</Text>
+    <Text style={{color:'white'}}>Hello world</Text>
   </View>;
 }
 
 function MainTabs() {
   return (
     <Tab.Navigator
-      initialRouteName="Start"
+      initialRouteName='HomeScreen'
       screenOptions={{
         headerShown: false,
         sceneStyle: { backgroundColor: theme.colors.background },
       }}
       
     >
-      <Tab.Screen name="Start" component={EmptyTabScreen} />
+      <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="FAQ" component={EmptyTabScreen} />
       <Tab.Screen name="TasteProfile" component={EmptyTabScreen} />
       <Tab.Screen name="Search" component={EmptyTabScreen} />
