@@ -6,6 +6,7 @@ import { BottomTabParamList, RootStackParamList } from './types';
 import { theme } from '../theme/theme';
 import { styles } from './style';
 import { HomeScreen } from '../screens/HomeScreen/HomeScreen';
+import { CustomTabBar } from './CustomTabBar';
 
 
 const Stack = createNativeStackNavigator<RootStackParamList>();
@@ -36,7 +37,7 @@ function MainTabs() {
         headerShown: false,
         sceneStyle: { backgroundColor: theme.colors.background },
       }}
-      
+      tabBar={(props) => <CustomTabBar {...props} />}
     >
       <Tab.Screen name="HomeScreen" component={HomeScreen} />
       <Tab.Screen name="FAQ" component={EmptyTabScreen} />
